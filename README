@@ -2,12 +2,18 @@
 # ---------------
 Redirect your GPU to windows vm, only AMD + NVIDIA
 
-# Edit grub entry
+
+# Edit entry
 # ---------------
-sudo vi /etc/default/grub
-..
-GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on"
-..
+  * grub
+  vi /etc/default/grub
+  ..
+  GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on"
+  ..
+  
+  * zfs
+  vi /etc/kernel/cmdline
+  root=ZFS=rpool/ROOT/YOUR-POOL-NAME boot=zfs nofb console=tty0 amd_iommu=on pcie_acs_override=downstream,multifunction video=vesafb:off,efifb:off video=efifb:off
 
 # Iommu options
 # ---------------
